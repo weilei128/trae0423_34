@@ -1,0 +1,51 @@
+server:
+  port: 10024
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: canteen-order-system
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://49.235.161.106:10011/db4?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: wl
+    password: Wl1733811
+  data:
+    redis:
+      host: 49.235.161.106
+      port: 10012
+      password: 
+      database: 0
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  web:
+    cors:
+      allowed-origins: "*"
+      allowed-methods: "*"
+      allowed-headers: "*"
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+jwt:
+  secret: canteen-order-system-secret-key-2024
+  expiration: 86400000
+
+logging:
+  level:
+    com.canteen: debug
